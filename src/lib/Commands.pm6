@@ -1,4 +1,4 @@
-unit module Commands;
+unit module commands;
 
 
 my %commands = (
@@ -30,3 +30,7 @@ class CommandExecutor {
 our sub execute(Str $line) {
     Command.parse($line, actions => CommandExecutor.new).made;
 } 
+
+our sub register(Str $name, Block $code) {
+    %commands{$name} = $code;
+}
