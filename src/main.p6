@@ -1,18 +1,7 @@
 #!/usr/bin/env perl6
 use lib 'src';
 use lib::Commands;
-use lib::Player;
-
-Commands::register("view", {
-    my $name = $_.join("/");
-    my $file = ("data/files/" ~ $name).IO;
-
-    if ($file.e) {
-        say $file.slurp;
-    } else {
-        say "$name does not exist";
-    }
-});
+use lib::Env;
 
 multi MAIN(*@args) {
     Commands::execute("$@args");

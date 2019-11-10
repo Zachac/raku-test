@@ -1,6 +1,5 @@
 unit module Commands;
 
-
 my %commands = (
     echo => { print "$_ " for @_; print "\n"; }
     quit => { exit }
