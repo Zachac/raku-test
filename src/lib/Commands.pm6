@@ -1,4 +1,4 @@
-unit module commands;
+unit module Commands;
 
 
 my %commands = (

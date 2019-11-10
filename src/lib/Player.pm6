@@ -1,8 +1,5 @@
-unit module player;
 
-use lib::Commands;
-
-class Player is export {
+class Player {
     has Str $.name;
     has @!inventory;
 

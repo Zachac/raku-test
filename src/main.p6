@@ -3,7 +3,7 @@ use lib 'src';
 use lib::Commands;
 use lib::Player;
 
-commands::register("view", {
+Commands::register("view", {
     my $name = $_.join("/");
     my $file = ("data/files/" ~ $name).IO;
 
@@ -15,13 +15,13 @@ commands::register("view", {
 });
 
 multi MAIN(*@args) {
-    commands::execute("$@args");
+    Commands::execute("$@args");
 }
 
 multi MAIN() {
     print "> ";
     while my $line = $*IN.get {
-        commands::execute($line);
+        Commands::execute($line);
         print "> ";
     }
 }
