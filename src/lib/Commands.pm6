@@ -9,7 +9,7 @@ grammar Command {
     token TOP { <command> [ \s* \; \s* <command> ]* \;? $ }
     token command { <name> [\s+ <argument>] * }
     token name { \w+ }
-    token argument { \w+ }
+    token argument { \w+[\-\w+]* }
     token match { <?> }
 }
 
