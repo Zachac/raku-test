@@ -1,5 +1,7 @@
 unit module Commands;
 
+use lib::Player;
+
 my %commands = (
     echo => { print "$_ " for @_; print "\n"; }
     quit => { exit }
@@ -13,7 +15,7 @@ grammar Command {
     token match { <?> }
 }
 
-class CommandExecutor {
+class CommandActions {
     method TOP($/) { make 1 }
     method command($/) {
         my $command = %commands{"$<name>"};
@@ -26,9 +28,19 @@ class CommandExecutor {
     }
 }
 
-our sub execute(Str $line) {
-    Command.parse($line, actions => CommandExecutor.new).made;
-} 
+class CommandExecutor is export {
+    has Player $.ply;
+    has CommandActions $!actions;
+
+    method TWEAK {
+        die "No player given" unless defined $.ply;
+        $!actions = CommandActions.new;
+    }
+
+    method execute(Str $line) {
+        Command.parse($line, actions => $!actions).made.perl;
+    }
+}
 
 our sub register(Str $name, Block $code) {
     %commands{$name} = $code;

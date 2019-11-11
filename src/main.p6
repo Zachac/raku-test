@@ -2,15 +2,20 @@
 use lib 'src';
 use lib::Commands;
 use lib::Env;
+use lib::Player;
 
 multi MAIN(*@args) {
-    Commands::execute("$@args");
+    my $commandLine = CommandExecutor.new(ply => Player.new);
+
+    $commandLine.execute("$@args");
 }
 
 multi MAIN() {
+    my $commandLine = CommandExecutor.new(ply => Player.new);
+
     print "> ";
     while my $line = $*IN.get {
-        Commands::execute($line);
+        $commandLine.execute($line);
         print "> ";
     }
 }
