@@ -3,6 +3,7 @@ use lib 'src';
 use lib::Commands;
 use lib::Env;
 use lib::Player;
+use lib::io::LineWrap;
 
 multi MAIN(*@args) {
     my $commandLine = CommandExecutor.new(ply => Player.new);
