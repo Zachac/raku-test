@@ -6,7 +6,7 @@ class Entity is Serializable {
     has $.name;
     has $.description;
 
-    method fields returns Capture {
-        return \("location", "name", "description");
+    method fields {
+        return "location", "name", "description";
     }
 }

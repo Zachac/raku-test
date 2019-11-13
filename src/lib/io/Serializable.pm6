@@ -2,10 +2,11 @@
 class Serializable {
     has $.uuid;
 
-    method fields returns Capture { ... };
+    method fields() returns Array { ... };
 
     method serialize(Str $filename) {
-        my @fields = $.fields.list;
+        my @fields = self.fields;
+
         my $fh = open $filename, :w;
 
         for @fields {
