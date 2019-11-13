@@ -6,6 +6,7 @@ grammar LineWrap {
         :my $*COLS = $cols;
         <leading_space> <record_whitespace> [ <line> ] * 
     }
+    
     regex line { <line_value> [<.ws>] || <line_value> }
     regex line_value {. ** { 1.. ($*COLS - $*WS) }}
     token record_whitespace { { $*WS = self.pos } }
