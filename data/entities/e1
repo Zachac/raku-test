@@ -1,3 +1,5 @@
-location: Any
-name: "hero"
-description: Any
+---
+location: ~
+name: hero
+description: ~
+...
