@@ -19,7 +19,6 @@ class Serializable {
 
     submethod load($type, Str $filename) is export {
         my %map = load-yaml($filename.IO.slurp);
-
         return $type.new(|%map);
     }
 }
