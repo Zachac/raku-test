@@ -16,10 +16,11 @@ class Serializable {
         $fh.say(save-yaml(%map));
         $fh.close();
     }
+}
 
-    method load(Str $filename) {
-        
-    }
+sub load-type($type, Str $filename) is export {
+    my %map = load-yaml($filename.IO.slurp);
 
+    return $type.new(|%map);
 }
 
