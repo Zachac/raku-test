@@ -1,5 +1,5 @@
 ---
-name: hero
-description: ~
 location: "root/spawn"
+description: ~
+name: hero
 ...
